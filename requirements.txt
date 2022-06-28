@@ -1,0 +1,9 @@
+scapy
+numpy
+pandas
+torch
+PIL
+seaborn
+ipython
+scipy
+matplotlib
