@@ -6,7 +6,7 @@ from torch.optim import lr_scheduler
 import torch.optim as optim
 from torch.autograd import Variable
 import torch.nn as nn
-from trainer import fit
+#from trainer import fit
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -30,8 +30,8 @@ def train_nn(train_loader, test_loader, epoch = 50, learning_rate = 1e-3):
     n_epochs = epoch
     lr = learning_rate
     loss_func = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=lr)
     model=CNN()
+    optimizer = optim.Adam(model.parameters(), lr=lr)
 
     if cuda:
         model.cuda()
@@ -86,17 +86,18 @@ def confusion_matrix(model, test_loader):
                 pos[y[i]][1] += 1
 
     labels = ['Chat', 'Email', 'File Transfer', 'Streaming', 'VoIP', 'VPN: Chat', 'VPN: File Transfer', 'VPN: Email', 'VPN: Streaming','VPN: VoIP']
+    classnum = len(labels)
     sumrc=0
     sumpr=0
     sumf1=0
-    for i in range(10):
+    for i in range(classnum):
         Rc = pos[i][1]/(pos[i][1]+pos[i][0])
         Pr = pos[i][1]/(pos[i][1]+neg[i][0])
         sumrc+=Rc
         sumpr+=Pr
         sumf1+=(2*Rc*Pr)/(Rc+Pr)
         print(f'{labels[i]}: Rc: {Rc}, Pr: {Pr}, F1: {(2*Rc*Pr)/(Rc+Pr)}')
-    print(f'AveRC = {sumrc/10}, AvePr = {sumpr/10}, Avef1 = {sumf1/10}')
+    print(f'AveRC = {sumrc/classnum}, AvePr = {sumpr/classnum}, Avef1 = {sumf1/classnum}')
     normalised_cm = cm / cm.sum(axis=1, keepdims=True)
     normalised_cm = np.nan_to_num(normalised_cm)
     fig, ax = plt.subplots(figsize=(12, 12))
