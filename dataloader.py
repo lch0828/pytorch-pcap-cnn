@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import numpy as np
 import torch
-from PIL import Image
+#from PIL import Image
 from torch.utils.data import Dataset
 from random import sample
 
@@ -17,7 +17,7 @@ class PCAP(Dataset):
         print(np.array(allData).shape)
         for fi in os.listdir(data_root):
             if fi.endswith('.npz'):
-                loaded = np.load(data_root + fi, allow_pickle = True)
+                loaded = np.load(os.path.join(data_root, fi), allow_pickle = True)
                 allData[loaded['label'][0]].extend(loaded['data'])
                 allLabel[loaded['label'][0]].extend(loaded['label'])
         print('data from ./pre loaded')
