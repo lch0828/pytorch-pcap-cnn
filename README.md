@@ -13,7 +13,7 @@
 
 * Make sure to download and unzip the dataset. Then run the following command for data preprocess:
     ```
-    python3 dataloader.py {path/to/unzipped/dataset}
+    python3 data_preprocess.py {path/to/unzipped/dataset}
     ```
 * The preprocessed dataset is saved to ```./pre```.
 

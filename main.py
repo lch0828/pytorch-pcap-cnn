@@ -12,7 +12,7 @@ if __name__ == '__main__':
     kwargs = {'num_workers': 1, 'pin_memory': True} if cuda else {}
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch, shuffle=True, **kwargs)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=batch, shuffle=False, **kwargs)
-    training_loss, training_accuracy, validation_loss, validation_accuracy = train_nn(train_loader, test_loader, epoch = 50)
+    training_loss, training_accuracy, validation_loss, validation_accuracy = train_nn(train_loader, test_loader, epoch)
     result_chart(training_accuracy, validation_accuracy, epoch)
 
     #load model

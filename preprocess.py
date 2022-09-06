@@ -5,7 +5,7 @@ from scipy import sparse
 import os
 import numpy as np
 import torch
-from PIL import Image
+#from PIL import Image
 from torch.utils.data import Dataset
 from joblib import Parallel, delayed #not yet implemented
 from scapy.layers.inet import IP, UDP
@@ -15,7 +15,7 @@ from scapy.layers.dns import DNS
 from scapy.layers.inet import TCP
 from scapy.utils import rdpcap
 from scapy.compat import raw
-from scapy.layers.l2 import Ether
+#from scapy.layers.l2 import Ether
 from scapy.layers.ipsec import ESP
 from prefix import PREFIX_TO_TRAFFIC_ID, ID_TO_TRAFFIC
 
